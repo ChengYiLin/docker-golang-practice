@@ -42,3 +42,18 @@ Resources:
           Properties:
             Path: /echo
             Method: GET
+  GinFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: GinFunction
+      Handler: gin
+      Runtime: go1.x
+      Architectures:
+      - x86_64
+      Tracing: Active
+      Events:
+        CatchAll:
+          Type: HttpApi
+          Properties:
+            Path: /gin
+            Method: GET
